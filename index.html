@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>O Show Cósmico</title>
+  </head>
+  <body>
+    <div class="curtain" id="curtain">
+      <div class="curtain-panel left"></div>
+      <div class="curtain-panel right"></div>
+      <button id="start-btn">Começar o Show</button>
+    </div>
+    
+    <div id="ascii-container">
+      <canvas id="ascii-canvas"></canvas>
+    </div>
+    
+    <video id="source-video" src="/video.mp4" crossorigin="anonymous" playsinline style="display:none;"></video>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

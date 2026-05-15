@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #050000;
+  color: #fff;
+  overflow: hidden;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+#ascii-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #030000;
+  position: absolute;
+  top: 0; 
+  left: 0;
+  z-index: 1;
+}
+
+#ascii-canvas {
+  display: block;
+}
+
+/* Premium Cinematic Veil */
+.curtain {
+  position: absolute;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background: transparent;
+  pointer-events: auto;
+}
+
+.curtain.open {
+  pointer-events: none;
+}
+
+.curtain-panel {
+  position: absolute;
+  top: 0;
+  width: 50vw;
+  height: 100vh;
+  background: #020000;
+  transition: transform 3s cubic-bezier(0.8, 0, 0.1, 1);
+  z-index: 101;
+}
+
+.curtain-panel.left { 
+  left: 0; 
+  transform-origin: left; 
+  border-right: 1px solid rgba(255, 30, 60, 0.15);
+  box-shadow: inset -40px 0 100px -20px rgba(255, 30, 60, 0.08);
+}
+
+.curtain-panel.right { 
+  right: 0; 
+  transform-origin: right; 
+  border-left: 1px solid rgba(255, 30, 60, 0.15);
+  box-shadow: inset 40px 0 100px -20px rgba(255, 30, 60, 0.08);
+}
+
+/* Glowing center fissure */
+.curtain::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%;
+  width: 1px; height: 100vh;
+  background: #ff1e3c;
+  transform: translateX(-50%);
+  z-index: 103;
+  box-shadow: 0 0 15px #ff1e3c, 0 0 40px #ff1e3c;
+  opacity: 0.4;
+  transition: opacity 1.5s, width 3s cubic-bezier(0.8, 0, 0.1, 1);
+  pointer-events: none;
+}
+
+.curtain.open::before {
+  opacity: 0;
+  width: 100vw;
+}
+
+/* Opening states */
+.curtain.open .curtain-panel.left { 
+  transform: translateX(-100%); 
+}
+.curtain.open .curtain-panel.right { 
+  transform: translateX(100%); 
+}
+
+/* Ultra-Premium Button */
+#start-btn {
+  z-index: 104;
+  padding: 1.2rem 4rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  color: #fff;
+  background: rgba(5, 0, 0, 0.7);
+  border: 1px solid rgba(255, 30, 60, 0.4);
+  cursor: pointer;
+  border-radius: 100px;
+  text-transform: uppercase;
+  letter-spacing: 10px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+}
+
+#start-btn::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -150%;
+  width: 150%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 30, 60, 0.3), transparent);
+  transition: left 0.8s ease;
+  transform: skewX(-20deg);
+}
+
+#start-btn:hover::before {
+  left: 150%;
+}
+
+#start-btn:hover {
+  border-color: #ff1e3c;
+  box-shadow: 0 0 40px rgba(255, 30, 60, 0.5), inset 0 0 15px rgba(255, 30, 60, 0.2);
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.9);
+  background: rgba(15, 0, 2, 0.9);
+  transform: translateY(-2px);
+}
+
+.curtain.open #start-btn {
+  opacity: 0;
+  transform: scale(0.9) translateY(20px);
+  pointer-events: none;
+}
